@@ -1,0 +1,1368 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY cpan "http://downlode.org/rdf/cpan/0.1/cpan.rdf#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY Process "http://www.daml.org/services/owl-s/1.1B/Process.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://sensorlab.ijs.si/2012/v0/crime.owl#"
+     xml:base="http://sensorlab.ijs.si/2012/v0/crime.owl"
+     xmlns:Process="http://www.daml.org/services/owl-s/1.1B/Process.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:cpan="http://downlode.org/rdf/cpan/0.1/cpan.rdf#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#hasParameter">
+        <rdfs:comment>A Module can have several parameters.</rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#definedBy -->
+
+    <owl:ObjectProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#definedBy">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment>Functions are defined by Modules.</rdfs:comment>
+        <owl:inverseOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#defines"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#defines -->
+
+    <owl:ObjectProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#defines">
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#defines"/>
+                <owl:someValuesFrom rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Function"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#defines"/>
+                <owl:someValuesFrom rdf:resource="&cpan;Module"/>
+            </owl:Restriction>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#formedOf -->
+
+    <owl:ObjectProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#formedOf">
+        <owl:inverseOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#forms"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#formedOf"/>
+                <owl:someValuesFrom rdf:resource="&cpan;Module"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#formedOf"/>
+                <owl:someValuesFrom rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Stack"/>
+            </owl:Restriction>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#forms -->
+
+    <owl:ObjectProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#forms"/>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#hasInterface -->
+
+    <owl:ObjectProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#hasInterface">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#hasInterface"/>
+                <owl:someValuesFrom rdf:resource="&cpan;Module"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#hasInterface"/>
+                <owl:someValuesFrom rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Interface"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#hasParameter -->
+
+    <owl:ObjectProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#hasParameter">
+        <rdfs:comment>A Module can have several parameters.</rdfs:comment>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#hasParameter"/>
+                <owl:someValuesFrom rdf:resource="&cpan;Module"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#hasParameter"/>
+                <owl:someValuesFrom rdf:resource="&Process;Parameter"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#hasScope -->
+
+    <owl:ObjectProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#hasScope">
+        <rdfs:comment>From the communication point of view, a module can have several scopes: singlehop, multihop, etc.</rdfs:comment>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#hasScope"/>
+                <owl:someValuesFrom rdf:resource="&cpan;Module"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#hasScope"/>
+                <owl:someValuesFrom rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Scope"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#implementsInterface -->
+
+    <owl:ObjectProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#implementsInterface">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#implementsInterface"/>
+                <owl:someValuesFrom rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Function"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#implementsInterface"/>
+                <owl:someValuesFrom rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Interface"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#interfaceImplementedBy -->
+
+    <owl:ObjectProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#interfaceImplementedBy">
+        <rdfs:comment>Interfaces are interfaceImplementedBy functions.</rdfs:comment>
+        <owl:inverseOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#implementsInterface"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#isSetBy -->
+
+    <owl:ObjectProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#isSetBy">
+        <rdfs:comment>The value of the parameter is set by a Module and is either determined automatically or requested from the end user as initialization parameter.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#isSetBy"/>
+                <owl:someValuesFrom rdf:resource="&cpan;Module"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#isSetBy"/>
+                <owl:someValuesFrom rdf:resource="&Process;Parameter"/>
+            </owl:Restriction>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#isUserSetBy -->
+
+    <owl:ObjectProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#isUserSetBy">
+        <rdfs:comment>The value of the parameter is set by a Module and is requested from the end user as initialization parameter.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#isSetBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#isUserSetByOptional -->
+
+    <owl:ObjectProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#isUserSetByOptional">
+        <rdfs:subPropertyOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#isSetBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#consumesPower -->
+
+    <owl:DatatypeProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#consumesPower">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#hasFootprint -->
+
+    <owl:DatatypeProperty rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#hasFootprint">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;positiveInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://downlode.org/rdf/cpan/0.1/cpan.rdf#Module -->
+
+    <owl:Class rdf:about="&cpan;Module"/>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#Function -->
+
+    <owl:Class rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#Function"/>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#Interface -->
+
+    <owl:Class rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#Interface"/>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#Scope -->
+
+    <owl:Class rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#Scope"/>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#Stack -->
+
+    <owl:Class rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#Stack"/>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_close -->
+
+    <owl:Class rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_close">
+        <rdfs:subClassOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_discover -->
+
+    <owl:Class rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_discover">
+        <rdfs:subClassOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_dropped -->
+
+    <owl:Class rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_dropped">
+        <rdfs:subClassOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_forward -->
+
+    <owl:Class rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_forward">
+        <rdfs:subClassOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_open -->
+
+    <owl:Class rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_open">
+        <rdfs:subClassOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_recv -->
+
+    <owl:Class rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_recv">
+        <rdfs:subClassOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_send -->
+
+    <owl:Class rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_send">
+        <rdfs:subClassOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_sent -->
+
+    <owl:Class rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_sent">
+        <rdfs:subClassOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_timed_out -->
+
+    <owl:Class rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_timed_out">
+        <rdfs:subClassOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.1B/Process.owl#Parameter -->
+
+    <owl:Class rdf:about="&Process;Parameter"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#attrlist -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#attrlist">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc">
+        <rdf:type rdf:resource="&cpan;Module"/>
+        <rdfs:comment>The abc module is designed to send annonymous broadcast messages on the selected channel. It uses three parameters chammelno, attrlist and num_tx. Channel_no configures the channel, attrlist determines the header of the packet while num_tx stores the number of attempted transmissions. All parameters are set in other modules.</rdfs:comment>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#attrlist"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_close"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_open"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_recv"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_send"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_sent"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#channel_no"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#num_tx"/>
+        <hasScope rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#singlehop"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#time_trigger_flg"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_interval"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_no"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_th"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_close -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_close">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_close"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_input -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_input">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_recv"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_open -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_open">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_open"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_recv -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_recv">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_recv"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_send -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_send">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_send"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_sent -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_sent">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_sent"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_app -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_app">
+        <rdf:type rdf:resource="&cpan;Module"/>
+        <rdfs:comment>The c_app module is mandatory and it assumes there&#39;s an application.</rdfs:comment>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_app_close"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_app_open"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_app_recv"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_app_send"/>
+        <hasScope rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#input"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_app_close -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_app_close">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_close"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_app_open -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_app_open">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_open"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_app_recv -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_app_recv">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_recv"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_app_send -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_app_send">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_send"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast">
+        <rdf:type rdf:resource="&cpan;Module"/>
+        <rdfs:comment>The broadcast module sends packets to all local area neighbors with an a header that identifies the sender.</rdfs:comment>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#attrlist"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_close"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_open"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_recv"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_send"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_sent"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#channel_no"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#num_tx"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#sender"/>
+        <hasScope rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#singlehop"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#time_trigger_flg"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_interval"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_no"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_th"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_close -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_close">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_close"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_open -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_open">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_open"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_recv -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_recv">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_recv"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_send -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_send">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_send"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_sent -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast_sent">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_sent"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_channel -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_channel">
+        <rdf:type rdf:resource="&cpan;Module"/>
+        <rdfs:comment>The channel module is the basic module of any stack and ensures the proper opening and closing of a communication channel. The value of the communication channel must be provided by the user as input.</rdfs:comment>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc_input"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_channel_close"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_channel_open"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_rime_output"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#channel_no"/>
+        <hasScope rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#singlehop"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_channel_close -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_channel_close">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_close"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_channel_open -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_channel_open">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_open"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh">
+        <rdf:type rdf:resource="&cpan;Module"/>
+        <hasParameter>hop_no</hasParameter>
+        <rdfs:comment> The mesh module sends packets using multi-hop routing to a specified receiver somewhere in the network. The mesh module uses 3 channel; one for the multi-hop forwarding and two for the route disovery.</rdfs:comment>
+        <hasParameter>originator</hasParameter>
+        <hasParameter>seq_no</hasParameter>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#attrlist"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_close"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_forward"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_open"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_recv"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_send"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_sent"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_timedout"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#channel_no"/>
+        <hasScope rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#multihop"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#time_trigger_flg"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_interval"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_no"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_th"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_close -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_close">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_close"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_forward -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_forward">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_forward"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_open -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_open">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_open"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_recv -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_recv">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_recv"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_send -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_send">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_send"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_sent -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_sent">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_sent"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_timedout -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh_timedout">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_timed_out"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop">
+        <rdf:type rdf:resource="&cpan;Module"/>
+        <rdfs:comment>The multihop module implementsInterface a multihop forwarding mechanism.</rdfs:comment>
+        <hasParameter>originator</hasParameter>
+        <hasParameter>hop_no</hasParameter>
+        <hasParameter>seq_no</hasParameter>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#attrlist"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_close"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_forward"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_open"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_recv"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_send"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_sent"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#channel_no"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#ereceiver"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#esender"/>
+        <hasScope rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#multihop"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#time_trigger_flg"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_interval"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_no"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_th"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_close -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_close">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_close"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_forward -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_forward">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_forward"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_open -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_open">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_open"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_recv -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_recv">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_recv"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_send -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_send">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_send"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_sent -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop_sent">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_sent"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood">
+        <rdf:type rdf:resource="&cpan;Module"/>
+        <hasParameter>originator</hasParameter>
+        <hasParameter>seq_no</hasParameter>
+        <hasParameter>hop_no</hasParameter>
+        <rdfs:comment>The netflood module does best-effort flooding.</rdfs:comment>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#attrlist"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_close"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_open"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_recv"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_send"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_sent"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#channel_no"/>
+        <hasScope rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#multihop"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#time_trigger_flg"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_interval"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_no"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_th"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_close -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_close">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_close"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_dropped -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_dropped">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_dropped"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_open -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_open">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_open"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_recv -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_recv">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_recv"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_send -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_send">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_send"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_sent -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood_sent">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_sent"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite">
+        <rdf:type rdf:resource="&cpan;Module"/>
+        <rdfs:comment>The polite module sends one local area broadcast packet within one time interval. If a packet with the same header is received from a neighbor within the interval, the packet is not sent.</rdfs:comment>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#attrlist"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_close"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_dropped"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_open"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_recv"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_send"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_sent"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#channel_no"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#num_tx"/>
+        <hasScope rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#singlehop"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#time_trigger_flg"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_interval"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_no"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_th"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_close -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_close">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_close"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_dropped -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_dropped">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_dropped"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_open -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_open">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_open"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_recv -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_recv">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_recv"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_send -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_send">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_send"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_sent -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite_sent">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_sent"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_reliable -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_reliable">
+        <rdf:type rdf:resource="&cpan;Module"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_rime_output -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_rime_output">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_send"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery">
+        <rdf:type rdf:resource="&cpan;Module"/>
+        <rdfs:comment>The route-discovery module does route discovery for Rime. It uses 2 channels; one for the flooded route request packets and one for the unicast route replies.</rdfs:comment>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#attrlist"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_close"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_discover"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_open"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_recv"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_sent"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_timedout"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#channel_no"/>
+        <hasScope rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#multihop"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#num_tx"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#time_trigger_flg"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_interval"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_no"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_th"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_close -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_close">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_close"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_discover -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_discover">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_send"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_open -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_open">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_open"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_recv -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_recv">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_recv"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_send -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_send">
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_sent -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_sent"/>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_timedout -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery_timedout">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_timed_out"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast">
+        <rdf:type rdf:resource="&cpan;Module"/>
+        <rdfs:comment>The unicast module sends a packet to an identified single-hop neighbor.</rdfs:comment>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#attrlist"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_close"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_open"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_recv"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_send"/>
+        <defines rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_sent"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#channel_no"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#num_tx"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#receiver"/>
+        <hasScope rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#singlehop"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#time_trigger_flg"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_interval"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_no"/>
+        <hasParameter rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_th"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_close -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_close">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_close"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_open -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_open">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_open"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_recv -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_recv">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_recv"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_send -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_send">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_send"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_sent -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast_sent">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_sent"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#bottom_interface"/>
+        <implementsInterface rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#channel_no -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#channel_no">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+        <isUserSetBy rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_channel"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#ereceiver -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#ereceiver">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+        <isUserSetBy rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#esender -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#esender">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+        <isUserSetBy rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#hop_no -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#hop_no">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#input -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#input"/>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#multihop -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#multihop"/>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#num_tx -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#num_tx">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#originator -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#originator">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#receiver -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#receiver">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+        <isUserSetBy rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#sender -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#sender">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+        <isUserSetBy rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#seq_no -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#seq_no">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#singlehop -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#singlehop"/>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#stack_1 -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#stack_1">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Stack"/>
+        <consumesPower rdf:datatype="&xsd;integer">4</consumesPower>
+        <hasFootprint rdf:datatype="&xsd;integer">5742</hasFootprint>
+        <rdfs:comment>reliable multihop</rdfs:comment>
+        <formedOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast"/>
+        <formedOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_channel"/>
+        <formedOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop"/>
+        <formedOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_reliable"/>
+        <formedOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#stact_2 -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#stact_2">
+        <rdf:type rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#Stack"/>
+        <consumesPower rdf:datatype="&xsd;integer">2</consumesPower>
+        <hasFootprint rdf:datatype="&xsd;integer">4257</hasFootprint>
+        <rdfs:comment>unreliable multihop</rdfs:comment>
+        <formedOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast"/>
+        <formedOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_channel"/>
+        <formedOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop"/>
+        <formedOf rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#time_trigger_flg -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#time_trigger_flg">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#top_interface"/>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_interval -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_interval">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_no -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_no">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_th -->
+
+    <owl:NamedIndividual rdf:about="http://sensorlab.ijs.si/2012/v0/crime.owl#trigger_th">
+        <rdf:type rdf:resource="&Process;Parameter"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_abc"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_broadcast"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_mesh"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_multihop"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_netflood"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_polite"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_route_discovery"/>
+        <isUserSetByOptional rdf:resource="http://sensorlab.ijs.si/2012/v0/crime.owl#c_unicast"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
