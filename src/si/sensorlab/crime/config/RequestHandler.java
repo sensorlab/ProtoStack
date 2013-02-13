@@ -1,12 +1,16 @@
 package si.sensorlab.crime.config;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -41,7 +45,12 @@ public class RequestHandler extends AbstractHandler {
 			throws IOException, ServletException {
 		
 		if (request.getMethod().equalsIgnoreCase("post")) {
-			doPost(request, response);			
+			try {
+				doPost(request, response);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
 		} else if (request.getMethod().equalsIgnoreCase("get")) {
 			doGet(request, response);
 		}
@@ -56,7 +65,7 @@ public class RequestHandler extends AbstractHandler {
 	}
 
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
+			throws ServletException, IOException, InterruptedException {
 		try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(
 					req.getInputStream()));
@@ -75,6 +84,8 @@ public class RequestHandler extends AbstractHandler {
 					settings = new Settings(recJSon, trStore);
 					CodeSrc outSrc = new CodeSrc((ArrayList<Stack>) settings.getStackList());
 					outSrc.configureStack(outSrcPath + "stack_template");
+					//program the node	
+					compileAndProgram("WINDOWS", out);
 				} catch (CRimeException e) {
 					out.print(e.getMessage());
 					out.close();
@@ -88,4 +99,63 @@ public class RequestHandler extends AbstractHandler {
 		}
 	}
 
+	protected void compileAndProgram(String HostOSNm, PrintWriter out) throws CRimeException {
+		try {	
+			if (HostOSNm.matches("WINDOWS")) {
+				List<String> command = new ArrayList<String>();
+				command.add("cs-make");
+				command.add("example-crime.load");
+				ProcessBuilder builder = new ProcessBuilder(command);
+				Map<String, String> environ = builder.environment();
+				environ.put("PATH", "C:/VesnaIDE/codesourcery/bin;/windows;/windows/system32;/winnt;C:/VesnaIDE/cygwin/bin;C:/VesnaIDE/openocd-x64-0.5.0/bin;");				   
+				builder.directory(
+						new File("C:\\Users\\carolina\\Documents\\Work\\Software\\Contiki-2.5\\examples\\rime_cmp"));
+
+				Process proc = builder.start();
+				StreamGobbler errorGobbler = new 
+		                StreamGobbler(proc.getErrorStream(), "-");     
+				StreamGobbler outputGobbler = new 
+		                StreamGobbler(proc.getInputStream(), "-");
+				 errorGobbler.start();
+		         outputGobbler.start();
+		         int exitVal = proc.waitFor();
+		         System.out.println("ExitValue: " + exitVal);        				
+			} else { 
+				new CRimeException("Unsupported host operating systemm!");
+			}
+		} catch (IOException e) {
+			out.print(e.getMessage());
+			out.close();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		};
+	}
+}
+
+class StreamGobbler extends Thread
+{
+    InputStream is;
+    String type;
+    
+    StreamGobbler(InputStream is, String type)
+    {
+        this.is = is;
+        this.type = type;
+    }
+    
+    public void run()
+    {
+        try
+        {
+            InputStreamReader isr = new InputStreamReader(is);
+            BufferedReader br = new BufferedReader(isr);
+            String line=null;
+            while ( (line = br.readLine()) != null)
+                System.out.println(type + "> " + line);    
+            } catch (IOException ioe)
+              {
+                ioe.printStackTrace();  
+              }
+    }
 }
