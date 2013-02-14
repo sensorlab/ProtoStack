@@ -164,8 +164,7 @@ public class CodeSrc {
 						}
 					}
 					if (triggerFlag) {
-						outStr = "	amodule" + stackIdx + "[" + modIdx + "].trigger_init_flg = 0; \n" +  
-								"	set_amodule_trigger(" + stackIdx + ", " + modIdx	+ ");";						
+						outStr = "	amodule" + stackIdx + "[" + modIdx + "].trigger_init_flg = 0; \n";										
 						bWriter.write(outStr);
 						bWriter.newLine();
 					}
