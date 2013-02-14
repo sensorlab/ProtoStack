@@ -25,6 +25,7 @@ public class RuleParser {
 	public static void parsePrefixes (File dir, TripleStore trStore) {
 		prefixes = new ArrayList<Prefix>();		
 		String FileNm = dir + "/stack.h";
+		trStore.getConnection();
 		try {
 			FileReader hFReader = new FileReader(FileNm);
 			BufferedReader hBReader = new BufferedReader(hFReader);	
@@ -38,6 +39,7 @@ public class RuleParser {
 					trStore.writeTriple(lnStr);
 				}
 			}
+			trStore.closeConnection();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,6 +56,7 @@ public class RuleParser {
 			}
 		};
 		String[] children = dir.list(filter);
+		trStore.getConnection();
 		
 		if (children != null) {
 			for (int i = 0; i < children.length; i++) {
@@ -83,6 +86,7 @@ public class RuleParser {
 			new CRimeException(
 					"No c_rime files in the directory: " + dir.getParent() + " ! Modules cannot be generated.");
 		}
+		trStore.closeConnection();
 	}
 	public static String getPrefix(String key){
 		for (int i = 0; i < prefixes.size(); i++) {

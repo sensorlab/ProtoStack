@@ -36,6 +36,7 @@ import com.amazonaws.util.json.JSONObject;
 
 public class TripleStore {
 	private Repository myRepository;
+	private RepositoryConnection con = null;
 	
 	static String queryModulesStr = 
 			"PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> " +
@@ -121,6 +122,24 @@ public class TripleStore {
 			e1.printStackTrace();
 		}
 	};
+	
+	public void getConnection () {
+		try {
+			con = myRepository.getConnection();
+		} catch (RepositoryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void closeConnection(){
+		try {
+			con.close();
+		} catch (RepositoryException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+	}
 
 	public void createRDFModule(String subject, String object) {
 		ValueFactory f = myRepository.getValueFactory();
@@ -189,17 +208,17 @@ public class TripleStore {
 
 		}				
 		
-		System.out.println(partsV[0] + " " + partsV[1] + " " + partsV[2]);
-
-		RepositoryConnection con = null;
-		try {
-			con = myRepository.getConnection();
+		System.out.println(partsV[0] + " " + partsV[1] + " " + partsV[2]);		
+		try {			
 			ValueFactory f = myRepository.getValueFactory();
 			if (typeV[0].equals("uri") && typeV[1].equals("uri") && typeV[2].equals("uri")){				
 				URI subjectURI = f.createURI(partsV[0]);
 				URI predicateURI = f.createURI(partsV[1]);				
 				URI objectURI = f.createURI(partsV[2]);				
-				con.add(subjectURI, predicateURI, objectURI);			
+				con.add(subjectURI, predicateURI, objectURI);
+				if (partsV[0].contains("echo_")){
+					System.out.println(partsV[0] + " " + partsV[1] + " " + partsV[2]);
+				}
 			} else if (typeV[0].equals("uri") && typeV[1].equals("uri") && typeV[2].equals("literal")){
 				URI subjectURI = f.createURI(partsV[0]);
 				URI predicateURI = f.createURI(partsV[1]);	
@@ -208,14 +227,7 @@ public class TripleStore {
 			} 									
 		} catch (OpenRDFException e) {
 			// handle exception
-		} finally {
-			try {
-				con.close();
-			} catch (RepositoryException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}		
+		} 	
 	}
 	public JSONObject getCrimeLayersLang() {					
 		HashMap<String, String> p1 = new HashMap<>();			

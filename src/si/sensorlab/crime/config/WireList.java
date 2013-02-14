@@ -50,9 +50,7 @@ public class WireList {
 				tmpTgt = temp;
 			}
 			
-			if (tmpSrc == startModuleId) {
-				return;
-			} else if (tmpSrc > startModuleId) {
+			if (tmpSrc > startModuleId) {
 				tmpSrc--; 
 			} 
 			if (tmpTgt > startModuleId) {tmpTgt--; }

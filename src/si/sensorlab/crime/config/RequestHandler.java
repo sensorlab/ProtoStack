@@ -78,7 +78,7 @@ public class RequestHandler extends AbstractHandler {
 				//listWirings();			
 			} else if (methodNm.equalsIgnoreCase("saveWiring")){
 				try {					
-					FileWriter hFWriter = new FileWriter("C:/Users/carolina/Documents/Work/Software/C-RIME Server/CRIMESrv/stacks/saved.json");
+					FileWriter hFWriter = new FileWriter("./stacks/saved.json");
 					hFWriter.write(recJSon.toString());
 					hFWriter.close();						
 					settings = new Settings(recJSon, trStore);

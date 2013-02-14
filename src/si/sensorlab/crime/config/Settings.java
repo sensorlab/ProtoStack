@@ -43,21 +43,20 @@ public class Settings {
 			for (int i = 0; i < moduleJSonV.length(); i++){				
 				JSONObject moduleJSon = (JSONObject) moduleJSonV.get(i);
 				String moduleNm = moduleJSon.getString("name");				
-					if (moduleNm.equalsIgnoreCase("c_app")) {
+										
+					if (moduleNm.equalsIgnoreCase("c_channel")) {
+						endModulesIdV.add(i);
+					} else if (moduleNm.contains("_app")) {
 						startModuleId = i;
-					} else {
-						if (moduleNm.equalsIgnoreCase("c_channel")) {
-							endModulesIdV.add(i);
-						}
-						List<Primitive> primitiveV = trStore.getPrimitives(moduleNm);
-									
-						JSONObject paramsJSon = moduleJSon.getJSONObject("value");				
-						List<Parameter> parameterV = parseParams(moduleNm, paramsJSon);
-					
-						Module stackModule = new Module(moduleNm, primitiveV, parameterV);	
-						moduleV.add(stackModule);						
 					}
-				}
+					List<Primitive> primitiveV = trStore.getPrimitives(moduleNm);
+								
+					JSONObject paramsJSon = moduleJSon.getJSONObject("value");				
+					List<Parameter> parameterV = parseParams(moduleNm, paramsJSon);
+				
+					Module stackModule = new Module(moduleNm, primitiveV, parameterV);	
+					moduleV.add(stackModule);						
+					}				
 			//parse wires
 			JSONArray wiresJSonV = modulesJSon.getJSONArray("wires");
 			for (int wireIdx = 0; wireIdx < wiresJSonV.length(); wireIdx++){
@@ -89,7 +88,7 @@ public class Settings {
 					}
 				}				
 				trStore.checkConsistency(protocolStack);
-				protocolStack.setStackName(m.getModuleNm());
+				protocolStack.setStackName(moduleV.get(moduleV.size() - 2).getModuleNm());
 				protocolStackV.add(protocolStack);	
 			}
 						
