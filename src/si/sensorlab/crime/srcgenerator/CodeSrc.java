@@ -164,9 +164,11 @@ public class CodeSrc {
 						}
 					}
 					if (triggerFlag) {
-						outStr = "	amodule" + stackIdx + "[" + modIdx + "].trigger_init_flg = 0; \n";										
+						outStr = "	stack[" + stackIdx + "].time_trigger_flg = 1; \n" +
+								"	amodule" + stackIdx + "[" + modIdx + "].trigger_init_flg = 0;";										
 						bWriter.write(outStr);
 						bWriter.newLine();
+						triggerFlag = false;
 					}
 					for (int primIdx = 0; primIdx < module.getPrimitiveNo(); primIdx++) {	
 						if (!module.getPrimitiveVal(primIdx).isEmpty()) {
