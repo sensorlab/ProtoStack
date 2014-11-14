@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY cpan "http://downlode.org/rdf/cpan/0.1/cpan.rdf#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY Process "http://www.daml.org/services/owl-s/1.1B/Process.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://localhost/owl/crime.owl#"
+     xml:base="http://localhost/owl/crime.owl"
+     xmlns:Process="http://www.daml.org/services/owl-s/1.1B/Process.owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:cpan="http://downlode.org/rdf/cpan/0.1/cpan.rdf#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#">
+    <owl:Ontology rdf:about="http://localhost/owl/crime.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://localhost/owl/crime.owl#definedBy -->
+
+    <owl:ObjectProperty rdf:about="http://localhost/owl/crime.owl#definedBy">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment>Functions are defined by Modules.</rdfs:comment>
+        <owl:inverseOf rdf:resource="http://localhost/owl/crime.owl#defines"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#defines -->
+
+    <owl:ObjectProperty rdf:about="http://localhost/owl/crime.owl#defines">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost/owl/crime.owl#defines"/>
+                <owl:someValuesFrom rdf:resource="&cpan;Module"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost/owl/crime.owl#defines"/>
+                <owl:someValuesFrom rdf:resource="http://localhost/owl/crime.owl#Function"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#hasInterface -->
+
+    <owl:ObjectProperty rdf:about="http://localhost/owl/crime.owl#hasInterface">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost/owl/crime.owl#hasInterface"/>
+                <owl:someValuesFrom rdf:resource="&cpan;Module"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost/owl/crime.owl#hasInterface"/>
+                <owl:someValuesFrom rdf:resource="http://localhost/owl/crime.owl#Interface"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#hasParameter -->
+
+    <owl:ObjectProperty rdf:about="http://localhost/owl/crime.owl#hasParameter">
+        <rdfs:comment>A Module can have several parameters.</rdfs:comment>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost/owl/crime.owl#hasParameter"/>
+                <owl:someValuesFrom rdf:resource="&cpan;Module"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost/owl/crime.owl#hasParameter"/>
+                <owl:someValuesFrom rdf:resource="&Process;Parameter"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#hasScope -->
+
+    <owl:ObjectProperty rdf:about="http://localhost/owl/crime.owl#hasScope">
+        <rdfs:comment>From the communication point of view, a module can have several scopes: singlehop, multihop, etc.</rdfs:comment>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost/owl/crime.owl#hasScope"/>
+                <owl:someValuesFrom rdf:resource="http://localhost/owl/crime.owl#Scope"/>
+            </owl:Restriction>
+        </rdfs:range>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost/owl/crime.owl#hasScope"/>
+                <owl:someValuesFrom rdf:resource="&cpan;Module"/>
+            </owl:Restriction>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#implementedBy -->
+
+    <owl:ObjectProperty rdf:about="http://localhost/owl/crime.owl#implementedBy">
+        <rdfs:comment>Interfaces are implementedBy functions.</rdfs:comment>
+        <owl:inverseOf rdf:resource="http://localhost/owl/crime.owl#implements"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#implements -->
+
+    <owl:ObjectProperty rdf:about="http://localhost/owl/crime.owl#implements">
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost/owl/crime.owl#implements"/>
+                <owl:someValuesFrom rdf:resource="http://localhost/owl/crime.owl#Function"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost/owl/crime.owl#implements"/>
+                <owl:someValuesFrom rdf:resource="http://localhost/owl/crime.owl#Interface"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#isSetBy -->
+
+    <owl:ObjectProperty rdf:about="http://localhost/owl/crime.owl#isSetBy">
+        <rdfs:comment>The value of the parameter is set by a Module and is either determined automatically or requested from the end user as initialization parameter.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&owl;topObjectProperty"/>
+        <rdfs:domain>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost/owl/crime.owl#isSetBy"/>
+                <owl:someValuesFrom rdf:resource="&Process;Parameter"/>
+            </owl:Restriction>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://localhost/owl/crime.owl#isSetBy"/>
+                <owl:someValuesFrom rdf:resource="&cpan;Module"/>
+            </owl:Restriction>
+        </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#isUserSetBy -->
+
+    <owl:ObjectProperty rdf:about="http://localhost/owl/crime.owl#isUserSetBy">
+        <rdfs:comment>The value of the parameter is set by a Module and is requested from the end user as initialization parameter.</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="http://localhost/owl/crime.owl#isSetBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#isUserSetByOptional -->
+
+    <owl:ObjectProperty rdf:about="http://localhost/owl/crime.owl#isUserSetByOptional">
+        <rdfs:subPropertyOf rdf:resource="http://localhost/owl/crime.owl#isSetBy"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://downlode.org/rdf/cpan/0.1/cpan.rdf#Module -->
+
+    <owl:Class rdf:about="&cpan;Module"/>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#Function -->
+
+    <owl:Class rdf:about="http://localhost/owl/crime.owl#Function"/>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#Interface -->
+
+    <owl:Class rdf:about="http://localhost/owl/crime.owl#Interface"/>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#Scope -->
+
+    <owl:Class rdf:about="http://localhost/owl/crime.owl#Scope"/>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#c_close -->
+
+    <owl:Class rdf:about="http://localhost/owl/crime.owl#c_close">
+        <rdfs:subClassOf rdf:resource="http://localhost/owl/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#c_discover -->
+
+    <owl:Class rdf:about="http://localhost/owl/crime.owl#c_discover">
+        <rdfs:subClassOf rdf:resource="http://localhost/owl/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#c_dropped -->
+
+    <owl:Class rdf:about="http://localhost/owl/crime.owl#c_dropped">
+        <rdfs:subClassOf rdf:resource="http://localhost/owl/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#c_forward -->
+
+    <owl:Class rdf:about="http://localhost/owl/crime.owl#c_forward">
+        <rdfs:subClassOf rdf:resource="http://localhost/owl/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#c_open -->
+
+    <owl:Class rdf:about="http://localhost/owl/crime.owl#c_open">
+        <rdfs:subClassOf rdf:resource="http://localhost/owl/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#c_recv -->
+
+    <owl:Class rdf:about="http://localhost/owl/crime.owl#c_recv">
+        <rdfs:subClassOf rdf:resource="http://localhost/owl/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#c_send -->
+
+    <owl:Class rdf:about="http://localhost/owl/crime.owl#c_send">
+        <rdfs:subClassOf rdf:resource="http://localhost/owl/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#c_sent -->
+
+    <owl:Class rdf:about="http://localhost/owl/crime.owl#c_sent">
+        <rdfs:subClassOf rdf:resource="http://localhost/owl/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://localhost/owl/crime.owl#c_timed_out -->
+
+    <owl:Class rdf:about="http://localhost/owl/crime.owl#c_timed_out">
+        <rdfs:subClassOf rdf:resource="http://localhost/owl/crime.owl#Function"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.daml.org/services/owl-s/1.1B/Process.owl#Parameter -->
+
+    <owl:Class rdf:about="&Process;Parameter"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
+
